@@ -1,200 +1,114 @@
+//Question NO.01:
 #include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-
-
-//QUESTION 1
-int main() {
-   int n;
-   printf("enter any num:");
-   scanf("%d",&n);
-   //with for loop
-   int count=0;
-   int sum=0;
-   for (int i=0;i<50;i++) {
-           if (count!=n) {
-                   if (i%2!=0) {
-                       printf("%d\n",i);
-                       count++;
-                       sum+=i;
-                   }
-           }else if(count==n) {
-               printf("sum of the first %d odd numbers is: %d\n",n,sum);
-               break;
-           }
-   }
-   //with while loop
-   int i=1;
-   sum=0;
-   count=0;
-   while (count<n) {
-           if(i%2!=0) {
-               printf("%d\n",i);
-
-               sum+=i;
-               i++;
-               count++;
-
-           }else {
-               i++;
-           }
-   }
-   printf("sum of first %d odd number is %d\n",n,sum);
-
-   //with do-while
-   i=1;
-   sum=0;
-   count=0;
-   do {
-       if (i%2!=0) {
-           printf("%d\n",i);
-           sum+=i;
-           i++;
-           count++;
-       }else {
-           i++;
-       }
-
-   } while(count<n);
-   printf("sum of first %d odd numbers is %d\n",n,sum);
-   return 0;
-}
-
-
-
-
-//QUSTION 2
- int row;
-   printf("Enter rows:");
-   scanf("%d",&row);
-   for(int i=0; i <=row; i++){
-    for (int j=0; j<=row-i-1;j++){
-        printf(" ");
-
-    }for (int k=0;k<i;k++){
-    printf("* ");
-    }printf("\n");
-   }
-
-
-//QUESTION 3
-
-void cmpstr(const char *s1,const char *s2) {
-   int len1=strlen(s1);
-   int len2=strlen(s2);
-   if (len1!=len2) {
-           printf("the two strings are of different lenghts");
-           return;
-   }
-   for (int i=0;i<len1;i++) {
-           if (s1[i]==s2[i]) {
-               printf("%c==%c\n",s1[i],s2[i]);
-           }else {
-               printf("%c!=%c\n",s1[i],s2[i]);
-
-           }
-   }
+void swap(int *x, int *y) {
+ int temp = *x;
+ *x = *y;
+ *y = temp;
 }
 int main() {
-   char str1[100];
-   printf("enter any string:");
-   scanf("%s",&str1);
-   char str2[100];
-   printf("enter any string:");
-   scanf("%s",&str2);
-   cmpstr(str1,str2);
-   return 0;
+ int a = 5;
+ int b = 10;
+ printf("Before swapping: a = %d, b = %d\n", a, b);
+ swap(&a, &b)
+ printf("After swapping: a = %d, b = %d\n", a, b);
+ return 0;
 }
-
-
-//QUESTION 4
-#include <ctype.h>
-
-void func(const char *str) {
-   int len=strlen(str);
-   for (int i=0;i<len;i++) {
-           if (str[i]!=' ') {
-
-               if (isupper(str[i])) {
-                       printf("%c",tolower(str[i]));
-               }else if (islower(str[i])) {
-                       printf("%c",toupper(str[i]));
-               }
-           }else if(str[i]==' ') {
-               printf(" ");
-           }
-   }
-}
-int main() {
-   char str[100];
-   printf("enter any sentence:");
-   scanf("%[^\n]",&str);
-   func(str);
-   return 0;
-}
-
-
-
-//QUESTION 5
+//Question NO.02:
 #include <stdio.h>
-#include <string.h>
-
-void array1(const char* string, char a[]) {
-    int len1 = strlen(string);
-    int count = 0;
-    int isDuplicate; // A flag to check for duplicates
-
-    for (int i = 0; i < len1; i++) {
-        isDuplicate = 0; // Initialize the flag for each character
-        for (int j = 0; j < count; j++) {
-            if (string[i] == a[j]) {
-                isDuplicate = 1;
-                break; // Exit the inner loop if a duplicate is found
-            }
-        }
-
-        if (!isDuplicate) {
-            a[count] = string[i];
-            count++;
-        }
-    }
-
-    a[count] = '\0'; // Null-terminate the result string
-    printf("%s\n", a);
+void printReverse(const char *str) {
+ const char *end = str;
+ while (*end != '\0') {
+ end++; }
+ while (end != str) {
+ end--; // printf("%c", *end);
+ }
+ printf("\n");
 }
-
 int main() {
-    char b[100];
-    printf("Enter your elements: ");
-    scanf("%s", b);
-    char a[100];
-    array1(b, a);
-    return 0;
+ const char *str = "Hello, World!";
+ printf("Original string: %s\n", str);
+ printf("String in reverse: ");
+ printReverse(str);
+ return 0;
 }
-
-
-
-//QUESTION 6
+//Question NO.03:
 #include <stdio.h>
-#include <string.h>
-
-  // Get the first distance from the user
-    printf("Enter first distance:\n");
-    printf("Feet: ");
-    scanf("%d", &distance1.feet);
-    printf("Inches: ");
-    scanf("%d", &distance1.inch);
-
-    // Get the second distance from the user
-    printf("\nEnter second distance:\n");
-    printf("Feet: ");
-    scanf("%d", &distance2.feet);
-    printf("Inches: ");
-    scanf("%d", &distance2.inch);
-    int result=distance1.feet+distance2.feet;
-    int result2=distance1.inch+distance2.inch;
-    printf("%d\n",result);
-    printf("%d",result2);
-
-    return 0;
+int main() {
+ int n;
+ printf("Enter the size of the array: ");
+ scanf("%d", &n);
+ int arr[n];
+ printf("Enter %d elements:\n", n);
+ int *ptr = arr;
+ for (int i = 0; i < n; i++) {
+ scanf("%d", ptr);
+ ptr++; }
+ printf("Array elements: ");
+ ptr = arr; for (int i = 0; i < n; i++) {
+ printf("%d ", *ptr);
+ ptr++; }
+ printf("\n");
+ return 0;
 }
+//Question NO.04:
+#include <stdio.h>
+int main() {
+ int n, key;
+ printf("Enter the size of the array: ");
+ scanf("%d", &n);
+ int arr[n];
+ printf("Enter %d elements:\n", n);
+ int *ptr = arr for (int i = 0; i < n; i++) {
+ scanf("%d", ptr);
+ ptr++;
+ }
+ printf("Enter the element to search for: ");
+ scanf("%d", &key);
+ ptr = arr; int found = 0;
+ for (int i = 0; i < n; i++) {
+ if (*ptr == key) {
+ found = 1;
+ break;
+ }
+ ptr++; }
+ if (found) {
+ printf("Element %d found in the array.\n", key);
+ } else {
+ printf("Element %d not found in the array.\n", key);
+ }
+ return 0;
+}
+//Question NO.05:
+#include <stdio.h>
+void addMatrices(int *mat1, int *mat2, int *result, int rows, int cols) {
+ for (int i = 0; i < rows; i++) {
+ for (int j = 0; j < cols; j++) {
+ *(result + i * cols + j) = *(mat1 + i * cols + j) + *(mat2 + i * cols + j);
+ }
+ }
+}
+int main() {
+ int rows, cols;
+ printf("Enter the number of rows: ");
+ scanf("%d", &rows);
+ printf("Enter the number of columns: ");
+ scanf("%d", &cols);
+ int matrix1[rows][cols], matrix2[rows][cols], result[rows][cols];
+ printf("Enter elements for the first matrix:\n");
+ for (int i = 0; i < rows; i++) {
+ for (int j = 0; j < cols; j++) {
+ scanf("%d", &matrix1[i][j]); }
+ }
+ printf("Enter elements for the second matrix:\n");
+ for (int i = 0; i < rows; i++) {
+ for (int j = 0; j < cols; j++) {
+ scanf("%d", &matrix2[i][j]); }
+ }
+ addMatrices(&matrix1[0][0], &matrix2[0][0], &result[0][0], rows, cols);
+ printf("Resultant matrix after addition:\n");
+ for (int i = 0; i < rows; i++) {
+ for (int j = 0; j < cols; j++) {
+ printf("%d ", result[i][j]); }
+ printf("\n");
+ }
+ return 0; }
